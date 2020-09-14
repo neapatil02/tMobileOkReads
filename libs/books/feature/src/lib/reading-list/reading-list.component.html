@@ -1,7 +1,7 @@
 <ng-container *ngIf="(readingList$ | async).length > 0; else empty">
   <div class="reading-list-item" *ngFor="let b of readingList$ | async">
     <div>
-      <img class="reading-list-item--cover" [src]="b.coverUrl" />
+      <img alt="" class="reading-list-item--cover" [src]="b.coverUrl" />
     </div>
     <div class="reading-list-item--details">
       <strong class="reading-list-item--details--title">{{ b.title }}</strong>
@@ -10,6 +10,15 @@
       </div>
     </div>
     <div>
+      <button
+        mat-icon-button
+        [attr.aria-label]="'Mark ' + b.title + ' as read in your reading list'"
+        (click)="markAsRead(b)"
+        class="check-circle"
+        [ngClass]="{'read': b.finished == true }"
+      >
+        <mat-icon>check_circle</mat-icon>
+      </button>
       <button
         mat-icon-button
         color="warn"
