@@ -36,7 +36,6 @@ describe('Books Reducer', () => {
       const action = ReadingListActions.failedAddToReadingList({
         book: createBook('B')
       });
-
       const result: State = reducer(state, action);
 
       expect(result.ids).toEqual(['A']);
